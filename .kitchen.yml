@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: parallels
+    driver:
+      provider: parallels
+      box: parallels/centos-6.5
+      customize:
+        on_window_close: keep-running
+      synced_folders:
+        - ['../../../.rpmbuild', '/home/vagrant/rpmbuild', ':create => true, :disabled => false']
+
+suites:
+  #------------------------------------------------------------------ fcgiwrap
+  - name: fcgiwrap
+    run_list:
+      - 'recipe[fcgiwrap::default]'
+    attributes: {}
