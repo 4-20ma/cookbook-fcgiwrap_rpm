@@ -36,9 +36,9 @@ node['fcgiwrap']['devel_packages'].each do |name|
 end # node['fcgiwrap']['packages'].each
 
 #---------------------------------------------------------------------- locals
+output = "#{node['fcgiwrap']['name']}-#{node['fcgiwrap']['version']}"
 src_filepath = Pathname.new \
   "#{Chef::Config['file_cache_path'] || '/tmp'}/#{node['fcgiwrap']['name']}"
-output = "#{node['fcgiwrap']['name']}-#{node['fcgiwrap']['version']}"
 
 #-------------------------------------------------------------- bash[git_pull]
 bash 'git_pull' do

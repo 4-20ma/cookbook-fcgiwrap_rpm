@@ -120,7 +120,7 @@ describe 'fcgiwrap.rpm::default' do
         end # it
       end # describe
 
-      #----------------------------------------------------- bash[rpmbuild]
+      #-------------------------------------------------------- bash[rpmbuild]
       describe 'rpmbuild' do
         it 'runs described bash script' do
           expect(chef_run).to run_bash(subject).with_user('vagrant')
