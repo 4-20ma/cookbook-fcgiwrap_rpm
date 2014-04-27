@@ -1,9 +1,14 @@
 fcgiwrap Cookbook
-======================
+=================
 [![Build Status](https://travis-ci.org/4-20ma/cookbook-fcgiwrap.png?branch=master)](https://travis-ci.org/4-20ma/cookbook-fcgiwrap)
 [![Dependency Status](https://gemnasium.com/4-20ma/cookbook-fcgiwrap.png)](https://gemnasium.com/4-20ma/cookbook-fcgiwrap)
 
-Builds an fcgiwrap binary RPM.
+Builds an `fcgiwrap` binary RPM. The primary use case for this cookbook is to leverage Test Kitchen to:
+
+- create a pristine virtual machine
+- download, build, & package `fcgiwrap` source code
+
+The newly-created RPM will be located in `.rpmbuild/RPMS/x86_64/fcgiwrap-x.y.z-1.el6.x86_64.rpm`.
 
 
 Requirements
@@ -32,7 +37,6 @@ File / Attribute(s)                 | Description
 `node['fcgiwrap']['git_url']`       | URL of fcgiwrap git repo
 `node['fcgiwrap']['name']`          | name to be used for RPM
 `node['fcgiwrap']['version']`       | version to be used for RPM
-&nbsp;                              | &nbsp;
 
 
 Recipes
@@ -42,7 +46,7 @@ This cookbook provides one main recipe for building a binary RPM.
 - `default.rb` - *Use this recipe* to build binary RPM.
 
 ### default
-This recipe builds an fcgiwrap binary RPM.
+This recipe builds an `fcgiwrap` binary RPM.
 
 
 Usage
