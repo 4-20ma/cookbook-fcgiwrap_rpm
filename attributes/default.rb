@@ -5,7 +5,7 @@
 #
 
 default['fcgiwrap'].tap do |fcgiwrap|
-  fcgiwrap['packages'] = %w(fcgi-devel)
+  fcgiwrap['devel_packages'] = %w(fcgi)
   fcgiwrap['git_url'] = 'https://github.com/schnell18/fcgiwrap.git'
   fcgiwrap['name'] = 'fcgiwrap'
   fcgiwrap['version'] = '1.1.0'

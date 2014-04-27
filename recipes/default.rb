@@ -31,8 +31,8 @@ include_recipe 'yum-epel'
 end # %w(...).each
 
 # packages required specifically for fcgiwrap
-node['fcgiwrap']['packages'].each do |name|
-  package name
+node['fcgiwrap']['devel_packages'].each do |name|
+  package "#{name}-devel"
 end # node['fcgiwrap']['packages'].each
 
 #---------------------------------------------------------------------- locals
