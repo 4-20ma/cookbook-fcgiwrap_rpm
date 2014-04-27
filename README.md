@@ -1,7 +1,7 @@
 fcgiwrap.rpm Cookbook
 =====================
-[![Build Status](https://travis-ci.org/4-20ma/cookbook-fcgiwrap.png?branch=master)](https://travis-ci.org/4-20ma/cookbook-fcgiwrap)
-[![Dependency Status](https://gemnasium.com/4-20ma/cookbook-fcgiwrap.png)](https://gemnasium.com/4-20ma/cookbook-fcgiwrap)
+[![Build Status](https://travis-ci.org/4-20ma/cookbook-fcgiwrap.rpm.png?branch=master)](https://travis-ci.org/4-20ma/cookbook-fcgiwrap.rpm)
+[![Dependency Status](https://gemnasium.com/4-20ma/cookbook-fcgiwrap.rpm.png)](https://gemnasium.com/4-20ma/cookbook-fcgiwrap.rpm)
 
 Builds an `fcgiwrap` binary RPM. The primary use case for this cookbook is to leverage Test Kitchen to:
 
