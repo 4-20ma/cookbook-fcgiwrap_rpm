@@ -37,6 +37,8 @@ File / Attribute(s)                 | Description
 `node['fcgiwrap']['git_url']`       | URL of fcgiwrap git repo
 `node['fcgiwrap']['name']`          | name to be used for RPM
 `node['fcgiwrap']['version']`       | version to be used for RPM
+`node['fcgiwrap']['pre_tidy']`      | set this to true to cleanup before build
+`node['fcgiwrap']['post_tidy']`     | set this to true to cleanup after build
 
 
 Recipes
@@ -54,7 +56,7 @@ Usage
 On client nodes, use the default recipe:
 
 ````javascript
-{ "run_list": ["recipe[fcgiwrap]"] }
+{ "run_list": ["recipe[fcgiwrap.rpm]"] }
 ````
 
 
