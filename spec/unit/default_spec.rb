@@ -9,6 +9,10 @@ describe 'fcgiwrap.rpm::default' do
       # need to use let instead of cached so mocks will work properly (slower)
       let(:chef_run) do
         ChefSpec::Runner.new(i) do |node|
+          # override cookbook attributes
+          node.override['fcgiwrap']['pre_tidy'] = true
+          node.override['fcgiwrap']['post_tidy'] = true
+
           # set cookbook attributes
           node.set['fcgiwrap']['devel_packages'] = %w(fcgi package2)
         end.converge(described_recipe)
@@ -61,6 +65,13 @@ describe 'fcgiwrap.rpm::default' do
       describe 'package2-devel' do
         it 'installs described package' do
           expect(chef_run).to install_package(subject)
+        end # it
+      end # describe
+
+      #-------------------------------------------------------- bash[pre_tidy]
+      describe 'pre_tidy' do
+        it 'runs described bash script' do
+          expect(chef_run).to run_bash(subject)
         end # it
       end # describe
 
@@ -125,6 +136,13 @@ describe 'fcgiwrap.rpm::default' do
         it 'runs described bash script' do
           expect(chef_run).to run_bash(subject).with_user('vagrant')
             .with_group('vagrant').with_environment('HOME' => '/home/vagrant')
+        end # it
+      end # describe
+
+      #------------------------------------------------------- bash[post_tidy]
+      describe 'post_tidy' do
+        it 'runs described bash script' do
+          expect(chef_run).to run_bash(subject)
         end # it
       end # describe
 

@@ -40,6 +40,12 @@ output = "#{node['fcgiwrap']['name']}-#{node['fcgiwrap']['version']}"
 src_filepath = Pathname.new \
   "#{Chef::Config['file_cache_path'] || '/tmp'}/#{node['fcgiwrap']['name']}"
 
+#-------------------------------------------------------------- bash[pre_tidy]
+bash 'pre_tidy' do
+  code    "rm -rf #{src_filepath} /home/vagrant/rpmbuild/*"
+  only_if { node['fcgiwrap']['pre_tidy'] }
+end # bash
+
 #-------------------------------------------------------------- bash[git_pull]
 bash 'git_pull' do
   cwd     src_filepath.to_s
@@ -81,6 +87,12 @@ bash 'rpmbuild' do
   group       'vagrant'
   environment 'HOME' => '/home/vagrant'
   code        "rpmbuild -ta #{output}.tgz"
+end # bash
+
+#------------------------------------------------------------- bash[post_tidy]
+bash 'post_tidy' do
+  code    "rm -rf #{src_filepath}"
+  only_if { node['fcgiwrap']['post_tidy'] }
 end # bash
 
 # RPM package will be located at:

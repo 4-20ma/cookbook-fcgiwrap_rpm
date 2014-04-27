@@ -20,4 +20,7 @@ suites:
   - name: fcgiwrap
     run_list:
       - 'recipe[fcgiwrap.rpm::default]'
-    attributes: {}
+    attributes:
+      fcgiwrap:
+        pre_tidy: false
+        post_tidy: false
