@@ -19,5 +19,5 @@ suites:
   #------------------------------------------------------------------ fcgiwrap
   - name: fcgiwrap
     run_list:
-      - 'recipe[fcgiwrap::default]'
+      - 'recipe[fcgiwrap.rpm::default]'
     attributes: {}

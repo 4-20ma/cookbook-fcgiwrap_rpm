@@ -1,5 +1,5 @@
-fcgiwrap Cookbook
-=================
+fcgiwrap.rpm Cookbook
+=====================
 [![Build Status](https://travis-ci.org/4-20ma/cookbook-fcgiwrap.png?branch=master)](https://travis-ci.org/4-20ma/cookbook-fcgiwrap)
 [![Dependency Status](https://gemnasium.com/4-20ma/cookbook-fcgiwrap.png)](https://gemnasium.com/4-20ma/cookbook-fcgiwrap)
 
