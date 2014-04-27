@@ -32,7 +32,7 @@ Attributes
 
 File / Attribute(s)                 | Description
 ------------------------------------|------------
-[default.rb](attributes/default.rb) | Recipe: `sudo`
+[default.rb](attributes/default.rb) |
 `node['fcgiwrap']['packages']`      | array of packages required to build fcgiwrap
 `node['fcgiwrap']['git_url']`       | URL of fcgiwrap git repo
 `node['fcgiwrap']['name']`          | name to be used for RPM
