@@ -29,6 +29,7 @@ describe 'fcgiwrap.rpm::default' do
       end # describe
 
       #------------------------------------------------------------- package[]
+      # packages required to build all rpms
       describe 'automake' do
         it 'installs described package' do
           expect(chef_run).to install_package(subject)
@@ -53,6 +54,7 @@ describe 'fcgiwrap.rpm::default' do
         end # it
       end # describe
 
+      # packages required specifically for fcgiwrap
       describe 'fcgi-devel' do
         it 'installs described package' do
           expect(chef_run).to install_package(subject)
@@ -106,14 +108,14 @@ describe 'fcgiwrap.rpm::default' do
 
       #-------------------------------------------------------- bash[git_pull]
       describe 'git_pull' do
-        it 'runs described bash script' do
+        it 'runs described bash script if directory exists' do
           allow_any_instance_of(Pathname).to receive(:directory?)
             .and_return(true)
           expect(chef_run).to run_bash(subject).with_user('vagrant')
             .with_group('vagrant')
         end # it
 
-        it 'does not run described bash script' do
+        it 'does not run described bash script unless directory exists' do
           allow_any_instance_of(Pathname).to receive(:directory?)
             .and_return(false)
           expect(chef_run).to_not run_bash(subject)
@@ -122,14 +124,14 @@ describe 'fcgiwrap.rpm::default' do
 
       #------------- bash[git_clone https://github.com/schnell18/fcgiwrap.git]
       describe 'git_clone https://github.com/schnell18/fcgiwrap.git' do
-        it 'runs described bash script' do
+        it 'runs described bash script unless directory exists' do
           allow_any_instance_of(Pathname).to receive(:directory?)
             .and_return(false)
           expect(chef_run).to run_bash(subject).with_user('vagrant')
             .with_group('vagrant')
         end # it
 
-        it 'does not run described bash script' do
+        it 'does not run described bash script if directory exists' do
           allow_any_instance_of(Pathname).to receive(:directory?)
             .and_return(true)
           expect(chef_run).to_not run_bash(subject)
@@ -162,7 +164,7 @@ describe 'fcgiwrap.rpm::default' do
             .with_user('vagrant').with_group('vagrant')
         end # it
 
-        it 'does not run described bash script' do
+        it 'does not run described bash script unless directory exists' do
           allow_any_instance_of(Pathname).to receive(:directory?)
             .and_return(false)
           expect(chef_run).to_not run_bash(subject)
