@@ -9,7 +9,7 @@ group :test do
   gem 'berkshelf', '~> 3.1.1'
   gem 'chefspec', '~> 3.4.0'
   gem 'foodcritic', '~> 3.0.3'
-  gem 'rubocop', '~> 0.20.1'
+  gem 'rubocop', '~> 0.21.0'
 end # group
 
 group :integration do

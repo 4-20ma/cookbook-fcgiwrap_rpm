@@ -2,10 +2,11 @@
 
 AllCops:
   Include:
+    - Berksfile
     - Gemfile
     - Rakefile
   Exclude:
-    - spec/foodcritic/**
+    - spec/foodcritic/**/*
 
 EmptyLines:
   Enabled: false
@@ -14,4 +15,7 @@ HashSyntax:
   EnforcedStyle: hash_rockets
 
 SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+UnusedBlockArgument:
   Enabled: false
