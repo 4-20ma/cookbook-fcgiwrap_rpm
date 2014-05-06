@@ -87,8 +87,7 @@ describe 'fcgiwrap.rpm::default' do
         it 'runs described bash script if directory exists' do
           allow_any_instance_of(Pathname).to receive(:directory?)
             .and_return(true)
-          expect(chef_run).to run_bash(subject).with_user(nil)
-            .with_group(nil)
+          expect(chef_run).to run_bash(subject)
         end # it
 
         it 'does not run described bash script unless directory exists' do
