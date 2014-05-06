@@ -20,9 +20,19 @@
 # limitations under the License.
 #
 
-#------------------------------------------------------------ include_recipe[]
-include_recipe 'build-essential'
-include_recipe 'yum-epel'
+#---------------------------------------------------------------------- locals
+home = Pathname.new('/') + 'home' + 'vagrant'
+products = home + 'products'
+rpmbuild = home + 'rpmbuild'
+rpms = rpmbuild + 'RPMS'
+sources = rpmbuild + 'SOURCES'
+output = "#{node['fcgiwrap']['name']}-#{node['fcgiwrap']['version']}"
+release = '1'
+src_filepath = sources + node['fcgiwrap']['name']
+rpm_filepath = rpms + 'x86_64' + "#{output}-#{release}.el6.x86_64.rpm"
+
+#------------------------------------------- include_recipe[yum-epel::default]
+include_recipe 'yum-epel::default'
 
 #------------------------------------------------------------------- package[]
 # packages required to build all rpms
@@ -35,15 +45,25 @@ node['fcgiwrap']['devel_packages'].each do |name|
   package "#{name}-devel"
 end # node['fcgiwrap']['packages'].each
 
-#---------------------------------------------------------------------- locals
-output = "#{node['fcgiwrap']['name']}-#{node['fcgiwrap']['version']}"
-src_filepath = Pathname.new \
-  "#{Chef::Config['file_cache_path'] || '/tmp'}/#{node['fcgiwrap']['name']}"
-
 #-------------------------------------------------------------- bash[pre_tidy]
 bash 'pre_tidy' do
-  code    "rm -rf #{src_filepath} /home/vagrant/rpmbuild/*"
+  code    "rm -rf #{src_filepath} #{rpmbuild}/*"
   only_if { node['fcgiwrap']['pre_tidy'] }
+end # bash
+
+#----------------------------------------------------------------- directory[]
+%w(SOURCES SPECS).each do |name|
+  directory "#{rpmbuild}/#{name}" do
+    user      'vagrant'
+    group     'vagrant'
+    recursive true
+  end # directory
+end # %w(...).each
+
+#------------------------------------------ bash[chown /home/vagrant/rpmbuild]
+bash "chown #{rpmbuild}" do
+  code    "chown -R vagrant:vagrant #{rpmbuild}"
+  only_if { rpmbuild.directory? }
 end # bash
 
 #-------------------------------------------------------------- bash[git_pull]
@@ -73,29 +93,37 @@ bash 'git_archive' do
   not_if  { (src_filepath + (output + '.tgz')).file? }
 end # bash
 
-#------------------------------------------ bash[chown /home/vagrant/rpmbuild]
-bash 'chown /home/vagrant/rpmbuild' do
-  dir_filepath = Pathname.new('/home/vagrant/rpmbuild')
-  code    "chown -R vagrant:vagrant #{dir_filepath}"
-  only_if { dir_filepath.directory? }
-end # bash
-
 #-------------------------------------------------------------- bash[rpmbuild]
 bash 'rpmbuild' do
   cwd         src_filepath.to_s
   user        'vagrant'
   group       'vagrant'
-  environment 'HOME' => '/home/vagrant'
+  environment 'HOME' => home.to_s
   code        "rpmbuild -ta #{output}.tgz"
+end # bash
+
+#--------------------------------------------------- bash[copy_final_products]
+bash 'copy_final_products' do
+  cwd     rpm_filepath.dirname.to_s
+  user    'vagrant'
+  group   'vagrant'
+  code    "cp -Ru #{rpm_filepath.dirname}/* #{products}"
+  only_if { products.directory? }
 end # bash
 
 #------------------------------------------------------------- bash[post_tidy]
 bash 'post_tidy' do
-  code    "rm -rf #{src_filepath}"
+  code    "rm -rf #{src_filepath} #{rpmbuild}/*"
   only_if { node['fcgiwrap']['post_tidy'] }
 end # bash
 
-# RPM package will be located at:
-#   /home/vagrant/rpmbuild/RPMS/x86_64/fcgiwrap-1.1.0-1.el6.x86_64.rpm
+# RPM package(s) will be located at:
+#   home/
+#     vagrant/
+#       rpmbuild/
+#         RPMS/
+#           x86_64/
+#             fcgiwrap-x.y.z-r.el6.x86_64.rpm
 # and locally at:
-#   .rpmbuild/RPMS/x86_64/fcgiwrap-1.1.0-1.el6.x86_64.rpm
+#   .products/
+#     fcgiwrap-x.y.z-r.el6.x86_64.rpm

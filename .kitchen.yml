@@ -6,6 +6,7 @@ provisioner:
   name: chef_zero
 
 platforms:
+  #------------------------------------------------------- provider[parallels]
   - name: parallels
     driver:
       provider: parallels
@@ -13,10 +14,22 @@ platforms:
       customize:
         on_window_close: keep-running
       synced_folders:
-        - ['../../../.rpmbuild', '/home/vagrant/rpmbuild', ':create => true, :disabled => false']
+        - - .products
+          - /home/vagrant/products
+          - ':create => true, :disabled => false'
+
+  #------------------------------------------------------ provider[virtualbox]
+  # - name: virtualbox
+  #   driver:
+  #     provider: virtualbox
+  #     box: chef/centos-6.5
+  #     synced_folders:
+  #       - - .products
+  #         - /home/vagrant/products
+  #         - ':create => true, :disabled => false'
 
 suites:
-  #------------------------------------------------------------------ fcgiwrap
+  #----------------------------------------------------------- suite[fcgiwrap]
   - name: fcgiwrap
     run_list:
       - 'recipe[fcgiwrap.rpm::default]'

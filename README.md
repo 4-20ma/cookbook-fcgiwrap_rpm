@@ -3,12 +3,18 @@ fcgiwrap.rpm Cookbook
 [![Build Status](https://travis-ci.org/4-20ma/cookbook-fcgiwrap.rpm.png?branch=master)](https://travis-ci.org/4-20ma/cookbook-fcgiwrap.rpm)
 [![Dependency Status](https://gemnasium.com/4-20ma/cookbook-fcgiwrap.rpm.png)](https://gemnasium.com/4-20ma/cookbook-fcgiwrap.rpm)
 
-Builds an `fcgiwrap` binary RPM. The primary use case for this cookbook is to leverage Test Kitchen to:
+Creates rpm package for `fcgiwrap`. The primary use case for this cookbook is to leverage Test Kitchen to:
 
 - create a pristine virtual machine
 - download, build, & package `fcgiwrap` source code
 
-The newly-created RPM will be located in `.rpmbuild/RPMS/x86_64/fcgiwrap-x.y.z-1.el6.x86_64.rpm`.
+The newly-created RPM will be located at:
+
+````text
+.
+└── .products
+    └── fcgiwrap-x.y.z-r.el6.x86_64.rpm
+````
 
 
 Requirements
@@ -53,10 +59,16 @@ This recipe builds an `fcgiwrap` binary RPM.
 
 Usage
 -----
-On client nodes, use the default recipe:
+Use Test Kitchen to converge the node and retrieve the resultant RPM from `.products/`.
 
-````javascript
-{ "run_list": ["recipe[fcgiwrap.rpm]"] }
+````bash
+$ kitchen converge
+````
+
+Optionally, the following command will converge the node and automatically destroy it when finished. Retrieve the RPM from `.products/`.
+
+````bash
+$ kitchen test
 ````
 
 
