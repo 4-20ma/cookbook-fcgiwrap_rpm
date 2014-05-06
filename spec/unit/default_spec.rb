@@ -82,14 +82,6 @@ describe 'fcgiwrap.rpm::default' do
         end # it
       end # describe
 
-      #------------------------------- directory[/home/vagrant/rpmbuild/SPECS]
-      describe '/home/vagrant/rpmbuild/SPECS' do
-        it 'creates directory with expected owner, group' do
-          expect(chef_run).to create_directory(subject)
-            .with_owner('vagrant').with_group('vagrant').with_recursive(true)
-        end # it
-      end # describe
-
       #------------------------------------ bash[chown /home/vagrant/rpmbuild]
       describe 'chown /home/vagrant/rpmbuild' do
         it 'runs described bash script if directory exists' do
