@@ -8,7 +8,6 @@ license           'Apache 2.0'
 version           '1.0.0'
 
 #------------------------------------------------------- cookbook dependencies
-depends           'build-essential'
 depends           'yum-epel'
 
 #--------------------------------------------------------- supported platforms

@@ -13,7 +13,9 @@ platforms:
       customize:
         on_window_close: keep-running
       synced_folders:
-        - ['../../../.rpmbuild', '/home/vagrant/rpmbuild', ':create => true, :disabled => false']
+        - - .products
+          - /home/vagrant/products
+          - ':create => true, :disabled => false'
 
 suites:
   #------------------------------------------------------------------ fcgiwrap
