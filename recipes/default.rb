@@ -40,7 +40,7 @@ include_recipe 'yum-epel::default'
   package name
 end # %w(...).each
 
-# packages required specifically for fcgiwrap
+# development packages required specifically for fcgiwrap
 node['fcgiwrap']['devel_packages'].each do |name|
   package "#{name}-devel"
 end # node['fcgiwrap']['packages'].each
