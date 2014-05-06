@@ -65,7 +65,7 @@ Use Test Kitchen to converge the node and retrieve the resultant RPM from `.prod
 $ kitchen converge
 ````
 
-Optionally, the following command will converge the node and automatically destroy it when finished. Retrieve the RPM from `.products/`.
+Alternatively, the following command will converge the node and automatically destroy it when finished. Retrieve the RPM from `.products/`.
 
 ````bash
 $ kitchen test
