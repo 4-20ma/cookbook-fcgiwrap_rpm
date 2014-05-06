@@ -52,7 +52,7 @@ bash 'pre_tidy' do
 end # bash
 
 #----------------------------------------------------------------- directory[]
-%w(SOURCES SPECS).each do |name|
+%w(SOURCES).each do |name|
   directory "#{rpmbuild}/#{name}" do
     user      'vagrant'
     group     'vagrant'
