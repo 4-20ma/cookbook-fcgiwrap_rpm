@@ -1,6 +1,17 @@
 CHANGELOG
 =========
 
+1.1.0 / 2014-05-06
+------------------
+
+- `BREAK` - move final product to `.products`
+- `NEW` - add integration tests | [#10][]
+- `IMPROVE` - remove specs from directory resource | [#8][]
+- `IMPROVE` - update kitchen-vagrant gem | [#6][]
+- `IMPROVE` - update rubocop gem | [#5][]
+- `IMPROVE` - update berkshelf gem | [#4][]
+
+
 1.0.0 / 2014-04-27
 ------------------
 
