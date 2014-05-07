@@ -20,9 +20,8 @@ The newly-created RPM will be located at:
 Requirements
 ------------
 ### Cookbooks
-The following cookbooks are direct dependencies because they're used for common "default" functionality.
+The following cookbook is a dependency because it's used for common "default" functionality.
 
-- [`build-essential`](https://github.com/opscode-cookbooks/build-essential)
 - [`yum-epel`](https://github.com/opscode-cookbooks/yum-epel)
 
 ### Platforms
