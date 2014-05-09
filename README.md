@@ -61,13 +61,13 @@ Usage
 Use Test Kitchen to converge the node and retrieve the resultant RPM from `.products/`.
 
 ````bash
-$ kitchen converge
+$ bundle exec kitchen converge
 ````
 
 Alternatively, the following command will converge the node and automatically destroy it when finished. Retrieve the RPM from `.products/`.
 
 ````bash
-$ kitchen test
+$ bundle exec kitchen test
 ````
 
 
