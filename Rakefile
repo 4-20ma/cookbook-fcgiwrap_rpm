@@ -85,7 +85,7 @@ end
 #------------------------------------------------------ ruby lint/style checks
 desc 'Runs rubocop lint tool against the cookbook.'
 task :rubocop do
-  Rubocop::RakeTask.new(:rubocop) do |t|
+  RuboCop::RakeTask.new(:rubocop) do |t|
     # t.fail_on_error = true
   end
 end # task
