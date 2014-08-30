@@ -13,4 +13,7 @@ RSpec.configure do |config|
   end # config.expect_with
 
   config.fail_fast = true
+
+  config.platform = 'centos'
+  config.version = '6.5'
 end # RSpec
