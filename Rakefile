@@ -76,7 +76,14 @@ end # task
 begin
   require 'emeril/rake_tasks'
   Emeril::RakeTasks.new do |t|
-    t.config[:publish_to_community] = false
+    # turn on debug logging
+    t.config[:logger].level = :debug
+
+    # set a category for this cookbook
+    t.config[:category] = 'Package Management'
+
+    # explicitly indicate whether to publish to chef supermarket
+    t.config[:publish_to_supermarket] = true
   end
 rescue LoadError
   STDOUT.puts '[WARN] Emeril::RakeTasks not loaded'
