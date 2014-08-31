@@ -15,7 +15,7 @@ CHANGELOG
 1.0.0 / 2014-04-27
 ------------------
 
-- `BREAK` - rename cookbook to `fcgiwrap.rpm`
+- `BREAK` - rename cookbook to `fcgiwrap_rpm`
 - `IMPROVE` - add support for pre-/post-build cleanup
 - `IMPROVE` - refactor devel package specification, examples
 

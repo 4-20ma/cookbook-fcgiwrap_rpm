@@ -1,5 +1,5 @@
 # encoding: utf-8
-name              'fcgiwrap.rpm'
+name              'fcgiwrap_rpm'
 maintainer        'Doc Walker'
 maintainer_email  '4-20ma@wvfans.net'
 description       'Creates rpm package for fcgiwrap.'
