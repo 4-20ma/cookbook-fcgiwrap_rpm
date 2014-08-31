@@ -20,6 +20,29 @@ task :build_ci do
   Rake::Task[:unit].invoke
 end # task
 
+#------------------------------------------------------------------- changelog
+# TODO: improve the following:
+# - remove bump version commits
+# - prepend to CHANGELOG without using changelog.tmp
+desc 'Updates changelog with commit messages'
+task :changelog, [:tag1, :tag2] do |t, args|
+  args.with_defaults(:tag1 => 'v0.1.0', :tag2 => 'HEAD')
+  date = `git log -1 --format=%ad #{args[:tag2]} --date=short`
+  title = %(#{args[:tag2].gsub(/^v/, '')} / #{date}).chomp
+  underline = '-' * title.size
+  url = 'https://github.com/4-20ma'
+  format = %(- "'`'"TYPE"'`'" - %s | [view](#{url}/$basename/commit/%h))
+  file = 'changelog.tmp'
+  sh <<-EOF
+    remote=$(git config --get branch.master.remote)
+    url=$(git config --get remote.$remote.url)
+    basename=$(basename "$url" .git)
+    echo "#{title}\n#{underline}\n" > #{file}
+    git log #{args[:tag1]}..#{args[:tag2]} --no-merges \
+      --pretty=format:"#{format}" >> #{file}
+  EOF
+end # task
+
 #------------------------------------------------------------------ unit tests
 task :chefspec => [:unit]
 RSpec::Core::RakeTask.new(:unit) do |t|
