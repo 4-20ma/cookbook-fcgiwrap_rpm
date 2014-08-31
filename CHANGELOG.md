@@ -1,5 +1,19 @@
-CHANGELOG
-=========
+2.0.0 / 2014-08-31
+------------------
+
+- `IMPROVE` - Add rake changelog task | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/373eceb)
+- `IMPROVE` - Remove debian/ubuntu support | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/a1ddbf7)
+- `BREAK` - Rename cookbook to fcgiwrap_rpm | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/0d92172)
+- `IMPROVE` - Update emeril gem | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/a1eff26)
+- `IMPROVE` - Update to ruby-2.1.2 | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/bed4d68)
+- `IMPROVE` - Update chefspec gem | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/377cff3)
+- `IMPROVE` - Update rubocop gem | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/a95510d)
+- `IMPROVE` - Update rubocop gem | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/9e372d7)
+- `IMPROVE` - Update chefspec gem | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/33cfb3b)
+- `FIX` - Lock rspec to v2.14.0 | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/b5ab2a2)
+- `IMPROVE` - Update foodcritic gem | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/f22593f)
+- `FIX` - Use bundled kitchen in README | [view](https://github.com/4-20ma/cookbook-fcgiwrap_rpm/commit/df3ed8c)
+
 
 1.1.0 / 2014-05-06
 ------------------
