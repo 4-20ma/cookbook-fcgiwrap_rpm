@@ -19,7 +19,3 @@ supports          'amazon'
 supports          'oracle'
 supports          'redhat'
 supports          'scientific'
-
-# platform_family?('debian'): not tested, but may work
-supports          'debian'
-supports          'ubuntu'
