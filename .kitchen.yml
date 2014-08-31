@@ -32,7 +32,7 @@ suites:
   #----------------------------------------------------------- suite[fcgiwrap]
   - name: fcgiwrap
     run_list:
-      - 'recipe[fcgiwrap.rpm::default]'
+      - 'recipe[fcgiwrap_rpm::default]'
     attributes:
       fcgiwrap:
         pre_tidy: false

@@ -1,6 +1,6 @@
 # encoding: utf-8
 #
-# Cookbook Name:: fcgiwrap.rpm
+# Cookbook Name:: fcgiwrap_rpm
 # Recipe:: default
 #
 # Author:: Doc Walker (<4-20ma@wvfans.net>)
