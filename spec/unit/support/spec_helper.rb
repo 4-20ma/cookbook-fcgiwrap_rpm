@@ -2,7 +2,11 @@
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chefspec/cacher'
+require 'coveralls'
 require 'pathname'
+
+Coveralls.wear!
+
 Dir.glob(File.dirname(__FILE__) + '/**/*.rb', &method(:require))
 
 ChefSpec::Coverage.start!
