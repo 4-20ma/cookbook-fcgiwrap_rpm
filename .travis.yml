@@ -1,6 +1,8 @@
-language: ruby
-bundler_args: --without development:integration
-rvm:
-  - 2.1.2
 before_install:
   - git submodule update --init --recursive
+bundler_args: --without development:integration
+cache: bundler
+language: ruby
+rvm:
+  - 2.1.2
+sudo: false
