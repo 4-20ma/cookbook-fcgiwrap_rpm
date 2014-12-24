@@ -1,7 +1,8 @@
 fcgiwrap_rpm Cookbook
 =====================
-[![Build Status](https://travis-ci.org/4-20ma/cookbook-fcgiwrap_rpm.png?branch=master)](https://travis-ci.org/4-20ma/cookbook-fcgiwrap_rpm)
-[![Dependency Status](https://gemnasium.com/4-20ma/cookbook-fcgiwrap_rpm.png)](https://gemnasium.com/4-20ma/cookbook-fcgiwrap_rpm)
+[![Travis](https://img.shields.io/travis/4-20ma/cookbook-fcgiwrap_rpm.svg?style=flat)](https://travis-ci.org/4-20ma/cookbook-fcgiwrap_rpm)
+[![Gemnasium](http://img.shields.io/gemnasium/4-20ma/cookbook-fcgiwrap_rpm.svg?style=flat)](https://gemnasium.com/4-20ma/cookbook-fcgiwrap_rpm)
+[![Coveralls](http://img.shields.io/coveralls/4-20ma/cookbook-fcgiwrap_rpm.svg?style=flat)](https://coveralls.io/r/4-20ma/cookbook-fcgiwrap_rpm)
 
 Creates rpm package for `fcgiwrap`. The primary use case for this cookbook is to leverage Test Kitchen to:
 
