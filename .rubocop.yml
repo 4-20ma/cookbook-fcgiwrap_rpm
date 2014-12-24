@@ -20,3 +20,9 @@ SingleSpaceBeforeFirstArg:
 
 UnusedBlockArgument:
   Enabled: false
+
+Metrics/AbcSize:
+  Max: 19
+
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
