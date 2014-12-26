@@ -92,7 +92,7 @@ end
 #--------------------------------------------------------------- syntax checks
 desc 'Runs knife cookbook syntax checks against the cookbook.'
 task :knife do
-  sh 'bundle exec knife cookbook test --all'
+  sh 'bundle exec knife cookbook test --all --cookbook-path .'
 end # task
 
 #-------------------------------------------------------------- release/tagger
