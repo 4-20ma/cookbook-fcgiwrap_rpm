@@ -1,5 +1,6 @@
 fcgiwrap_rpm Cookbook
 =====================
+[![Chef cookbook](https://img.shields.io/cookbook/v/fcgiwrap_rpm.svg?style=flat)](https://supermarket.chef.io/cookbooks/fcgiwrap_rpm)
 [![Travis](https://img.shields.io/travis/4-20ma/cookbook-fcgiwrap_rpm.svg?style=flat)](https://travis-ci.org/4-20ma/cookbook-fcgiwrap_rpm)
 [![Gemnasium](http://img.shields.io/gemnasium/4-20ma/cookbook-fcgiwrap_rpm.svg?style=flat)](https://gemnasium.com/4-20ma/cookbook-fcgiwrap_rpm)
 
