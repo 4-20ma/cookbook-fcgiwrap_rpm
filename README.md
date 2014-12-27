@@ -76,6 +76,12 @@ $ bundle exec kitchen test
 ````
 
 
+Acknowledgements
+----------------
+
+- [schnell18/fcgiwrap](https://github.com/schnell18/fcgiwrap.git) Simple FastCGI wrapper for CGI scripts
+
+
 License & Authors
 -----------------
 - Author:: Doc Walker (<4-20ma@wvfans.net>)
