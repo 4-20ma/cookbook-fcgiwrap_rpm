@@ -3,6 +3,4 @@ before_install:
 bundler_args: --without development:integration
 cache: bundler
 language: ruby
-rvm:
-  - 2.1.5
 sudo: false
