@@ -4,7 +4,7 @@ maintainer        'Doc Walker'
 maintainer_email  '4-20ma@wvfans.net'
 description       'Creates rpm package for fcgiwrap.'
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-license           'Apache 2.0'
+license           'Apache-2.0'
 version           '2.0.1'
 
 #------------------------------------------------------- cookbook dependencies
