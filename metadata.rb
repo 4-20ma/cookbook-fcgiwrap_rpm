@@ -8,7 +8,7 @@ license           'Apache-2.0'
 version           '2.0.1'
 
 #------------------------------------------------------- cookbook dependencies
-depends           'yum-epel', '~> 0.3.6'
+depends           'yum-epel', '>= 1.0.2'
 
 #--------------------------------------------------------- supported platforms
 # tested
