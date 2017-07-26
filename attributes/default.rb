@@ -1,5 +1,3 @@
-# encoding: utf-8
-#
 # Cookbook Name:: fcgiwrap_rpm
 # Attributes:: default
 #

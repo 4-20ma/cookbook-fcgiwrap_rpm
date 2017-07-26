@@ -4,13 +4,14 @@ require 'bundler/setup'
 require 'foodcritic'
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
+require 'cookstyle'
 
 # Style guide for this Rakefile:
 # - place default task at the beginning of the file
 # - individual tasks are listed in alphabetical order
 
 #---------------------------------------------- automatically run by travis-ci
-task :default => [:build_ci]
+task default: [:build_ci]
 
 desc 'Builds the package for ci server.'
 task :build_ci do
@@ -24,8 +25,8 @@ end # task
 # - remove bump version commits
 # - prepend to CHANGELOG without using changelog.tmp
 desc 'Updates changelog with commit messages'
-task :changelog, [:tag1, :tag2] do |t, args|
-  args.with_defaults(:tag1 => 'v0.1.0', :tag2 => 'HEAD')
+task :changelog, [:tag1, :tag2] do |_t, args|
+  args.with_defaults(tag1: 'v0.1.0', tag2: 'HEAD')
   date = `git log -1 --format=%ad #{args[:tag2]} --date=short`
   title = %(#{args[:tag2].gsub(/^v/, '')} / #{date}).chomp
   underline = '-' * title.size
@@ -43,7 +44,7 @@ task :changelog, [:tag1, :tag2] do |t, args|
 end # task
 
 #------------------------------------------------------------------ unit tests
-task :chefspec => [:unit]
+task chefspec: [:unit]
 RSpec::Core::RakeTask.new(:unit) do |t|
   file_list = FileList['spec/**/*_spec.rb']
 
@@ -64,9 +65,9 @@ end # RSpec::Core::RakeTask
 FoodCritic::Rake::LintTask.new do |t|
   # exclude tags by using ~FC002 notation within :tags array
   t.options = {
-    :fail_tags => %w(any),
-    :include_rules => ['spec/foodcritic'],
-    :tags => %w()
+    fail_tags: %w(any),
+    include_rules: ['spec/foodcritic'],
+    tags: %w(),
   }
 end # FoodCritic::Rake::LintTask.new
 
@@ -83,7 +84,7 @@ begin
   Kitchen::RakeTasks.new
 
   desc 'Run all test instances'
-  task :kitchen => ['kitchen:all']
+  task kitchen: ['kitchen:all']
 rescue LoadError
   STDOUT.puts '[WARN] Kitchen::RakeTasks not loaded'
 end

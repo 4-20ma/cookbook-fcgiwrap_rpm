@@ -158,5 +158,4 @@ describe 'fcgiwrap_rpm::default' do
       expect(subject).to be_mode(644)
     end # it
   end # describe
-
 end # describe
