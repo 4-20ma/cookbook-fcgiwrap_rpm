@@ -14,7 +14,6 @@ task :default => [:build_ci]
 
 desc 'Builds the package for ci server.'
 task :build_ci do
-  Rake::Task[:knife].invoke
   Rake::Task[:rubocop].invoke
   Rake::Task[:foodcritic].invoke
   Rake::Task[:unit].invoke
@@ -88,12 +87,6 @@ begin
 rescue LoadError
   STDOUT.puts '[WARN] Kitchen::RakeTasks not loaded'
 end
-
-#--------------------------------------------------------------- syntax checks
-desc 'Runs knife cookbook syntax checks against the cookbook.'
-task :knife do
-  sh 'bundle exec knife cookbook test --all --cookbook-path .'
-end # task
 
 #-------------------------------------------------------------- release/tagger
 begin
