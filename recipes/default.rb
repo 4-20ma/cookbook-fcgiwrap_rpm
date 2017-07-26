@@ -1,5 +1,3 @@
-# encoding: utf-8
-#
 # Cookbook Name:: fcgiwrap_rpm
 # Recipe:: default
 #
@@ -36,14 +34,10 @@ include_recipe 'yum-epel::default'
 
 #------------------------------------------------------------------- package[]
 # packages required to build all rpms
-%w(automake git pkgconfig rpm-build).each do |name|
-  package name
-end # %w(...).each
+package %w(automake git pkgconfig rpm-build)
 
 # development packages required specifically for fcgiwrap
-node['fcgiwrap']['devel_packages'].each do |name|
-  package "#{name}-devel"
-end # node['fcgiwrap']['packages'].each
+package node['fcgiwrap']['devel_packages']
 
 #-------------------------------------------------------------- bash[pre_tidy]
 bash 'pre_tidy' do
