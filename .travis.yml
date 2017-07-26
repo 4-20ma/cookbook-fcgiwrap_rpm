@@ -18,10 +18,10 @@ branches:
 # Ensure we make ChefDK's Ruby the default
 before_script:
   - eval "$(chef shell-init bash)"
-  - chef gem install emeril
 
 script:
   - chef --version
   - cookstyle --version
   - foodcritic --version
-  - rake
+  - chef exec delivery local all
+
