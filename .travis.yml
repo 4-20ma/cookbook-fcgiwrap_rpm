@@ -1,6 +1,26 @@
-before_install:
-  - git submodule update --init --recursive
-bundler_args: --without development:integration
-cache: bundler
-language: ruby
+
+dist: trusty
 sudo: false
+addons:
+  apt:
+    sources:
+      - chef-current-trusty
+    packages:
+      - chefdk
+
+# Don't `bundle install`
+install: echo "skip bundle install"
+
+branches:
+  only:
+    - master
+
+# Ensure we make ChefDK's Ruby the default
+before_script:
+  - eval "$(chef shell-init bash)"
+
+script:
+  - chef --version
+  - cookstyle --version
+  - foodcritic --version
+  - rake
