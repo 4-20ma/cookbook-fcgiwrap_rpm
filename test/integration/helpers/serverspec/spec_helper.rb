@@ -1,4 +1,3 @@
-# encoding: utf-8
 require 'serverspec'
 require 'platform_helpers'
 

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 # returns true if platform family matches value (accepts :symbol or 'string')
 def platform?(value)
   platform = backend.check_os
