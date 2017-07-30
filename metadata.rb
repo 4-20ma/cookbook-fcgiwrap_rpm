@@ -4,8 +4,8 @@ maintainer_email  '4-20ma@wvfans.net'
 description       'Creates rpm package for fcgiwrap.'
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 license           'Apache-2.0'
-version           '2.0.1'
-chef_version      '>= 12.1'
+version           '3.0.0'
+chef_version      '>= 12.1' if respond_to?(:chef_version)
 
 #------------------------------------------------------- cookbook dependencies
 depends           'yum-epel', '>= 1.0.2'
