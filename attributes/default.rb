@@ -3,7 +3,7 @@
 #
 
 default['fcgiwrap'].tap do |fcgiwrap|
-  fcgiwrap['devel_packages'] = %w(fcgi)
+  fcgiwrap['devel_packages'] = %w(fcgi fcgi-devel)
   fcgiwrap['git_url'] = 'https://github.com/schnell18/fcgiwrap.git'
   fcgiwrap['name'] = 'fcgiwrap'
   fcgiwrap['version'] = '1.1.0' # NOTE: may be overridden in .kitchen.yml
