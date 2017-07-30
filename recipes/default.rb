@@ -34,7 +34,7 @@ include_recipe 'yum-epel::default'
 
 #------------------------------------------------------------------- package[]
 # packages required to build all rpms
-package %w(automake git pkgconfig rpm-build)
+package %w(automake git pkgconfig gcc rpm-build)
 
 # development packages required specifically for fcgiwrap
 package node['fcgiwrap']['devel_packages']
