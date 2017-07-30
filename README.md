@@ -15,27 +15,29 @@ Creates rpm package for `fcgiwrap`. The primary use case for this cookbook is to
 
 The newly-created RPM will be located at:
 
-````text
+```text
 .
 └── .products
     └── fcgiwrap-x.y.z-r.el6.x86_64.rpm
-````
+```
 
 
 Requirements
 ------------
 ### Cookbooks
+
 The following cookbook is a dependency because it's used for common "default" functionality.
 
 - [`yum-epel`](https://github.com/opscode-cookbooks/yum-epel)
 
 ### Platforms
+
 The following platform is supported and tested under Test Kitchen:
 
-- CentosOS 6.5
+- Amazon Linux
+- CentOS 6/7
 
 Other RHEL family distributions are assumed to work.
-
 
 Attributes
 ----------
@@ -58,6 +60,7 @@ This cookbook provides one main recipe for building a binary RPM.
 - `default.rb` - *Use this recipe* to build binary RPM.
 
 ### default
+
 This recipe builds an `fcgiwrap` binary RPM.
 
 
@@ -65,16 +68,15 @@ Usage
 -----
 Use Test Kitchen to converge the node and retrieve the resultant RPM from `.products/`.
 
-````bash
+```bash
 $ bundle exec kitchen converge
-````
+```
 
 Alternatively, the following command will converge the node and automatically destroy it when finished. Retrieve the RPM from `.products/`.
 
-````bash
+```bash
 $ bundle exec kitchen test
-````
-
+```
 
 Acknowledgements
 ----------------
