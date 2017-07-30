@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'fcgiwrap_rpm::default' do
   [
-    { :platform => 'centos', :version => '6.5' }
+    { platform: 'centos', version: '6.5' },
   ].each do |i|
     context "#{i[:platform]}/#{i[:version]}" do
       # need to use let instead of cached so mocks will work properly (slower)
@@ -102,7 +102,7 @@ describe 'fcgiwrap_rpm::default' do
           allow_any_instance_of(Pathname).to receive(:directory?)
             .and_return(true)
           expect(chef_run).to run_bash(subject).with_user('vagrant')
-            .with_group('vagrant')
+                                               .with_group('vagrant')
         end # it
 
         it 'does not run described bash script unless directory exists' do
@@ -118,7 +118,7 @@ describe 'fcgiwrap_rpm::default' do
           allow_any_instance_of(Pathname).to receive(:directory?)
             .and_return(false)
           expect(chef_run).to run_bash(subject).with_user('vagrant')
-            .with_group('vagrant')
+                                               .with_group('vagrant')
         end # it
 
         it 'does not run described bash script if directory exists' do
@@ -132,7 +132,7 @@ describe 'fcgiwrap_rpm::default' do
       describe 'git_archive' do
         it 'runs described bash script' do
           expect(chef_run).to run_bash(subject).with_user('vagrant')
-            .with_group('vagrant')
+                                               .with_group('vagrant')
         end # it
       end # describe
 
@@ -167,8 +167,6 @@ describe 'fcgiwrap_rpm::default' do
           expect(chef_run).to run_bash(subject)
         end # it
       end # describe
-
     end # context
   end # [...].each
-
 end # describe

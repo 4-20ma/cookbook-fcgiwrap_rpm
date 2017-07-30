@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 # returns true if platform family matches value (accepts :symbol or 'string')
-# rubocop:disable CyclomaticComplexity
 def platform?(value)
   platform = chef_run.node
   case value.to_s
