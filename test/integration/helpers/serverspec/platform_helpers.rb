@@ -11,4 +11,3 @@ def platform?(value)
   else false
   end # case
 end # def
-# rubocop:enable CyclomaticComplexity

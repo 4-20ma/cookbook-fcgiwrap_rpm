@@ -36,6 +36,9 @@ include_recipe 'yum-epel::default'
 # packages required to build all rpms
 package %w(automake git pkgconfig gcc rpm-build)
 
+# systemd-devel is needed for systemd hosts
+package 'systemd-devel' if node['init_package'] == 'systemd'
+
 # development packages required specifically for fcgiwrap
 package node['fcgiwrap']['devel_packages']
 

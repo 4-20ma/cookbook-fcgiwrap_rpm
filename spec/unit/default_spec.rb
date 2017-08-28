@@ -1,8 +1,8 @@
-require 'spec_helper'
+require_relative 'support/spec_helper'
 
 describe 'fcgiwrap_rpm::default' do
   [
-    { platform: 'centos', version: '6.5' },
+    { platform: 'centos', version: '6.9' },
   ].each do |i|
     context "#{i[:platform]}/#{i[:version]}" do
       # need to use let instead of cached so mocks will work properly (slower)
@@ -13,7 +13,7 @@ describe 'fcgiwrap_rpm::default' do
           node.override['fcgiwrap']['post_tidy'] = true
 
           # set cookbook attributes
-          node.set['fcgiwrap']['devel_packages'] = %w(fcgi package2)
+          node.override['fcgiwrap']['devel_packages'] = %w(fcgi package2)
         end.converge(described_recipe)
       end # let
 
@@ -29,40 +29,13 @@ describe 'fcgiwrap_rpm::default' do
 
       #------------------------------------------------------------- package[]
       # packages required to build all rpms
-      describe 'automake' do
-        it 'installs described package' do
-          expect(chef_run).to install_package(subject)
+      describe 'Installs necessary packages' do
+        it 'installs build packages' do
+          expect(chef_run).to install_package(%w(automake git pkgconfig gcc rpm-build))
         end # it
-      end # describe
 
-      describe 'git' do
-        it 'installs described package' do
-          expect(chef_run).to install_package(subject)
-        end # it
-      end # describe
-
-      describe 'pkgconfig' do
-        it 'installs described package' do
-          expect(chef_run).to install_package(subject)
-        end # it
-      end # describe
-
-      describe 'rpm-build' do
-        it 'installs described package' do
-          expect(chef_run).to install_package(subject)
-        end # it
-      end # describe
-
-      # packages required specifically for fcgiwrap
-      describe 'fcgi-devel' do
-        it 'installs described package' do
-          expect(chef_run).to install_package(subject)
-        end # it
-      end # describe
-
-      describe 'package2-devel' do
-        it 'installs described package' do
-          expect(chef_run).to install_package(subject)
+        it 'installs fpm packages' do
+          expect(chef_run).to install_package(%w(fcgi package2))
         end # it
       end # describe
 
